@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import argparse
 
-parser = argparse.ArgumentParser(prog='visualize.py', description='Visuaiz neural network activations of trained models', add_help=True)
+parser = argparse.ArgumentParser(prog='visualize.py', description='Visualize neural network activations of trained models', add_help=True)
 parser.add_argument('-dataset', dest='dataset', metavar='mnist', help='dataset name', type=str, required=True)
 args = parser.parse_args()
 
