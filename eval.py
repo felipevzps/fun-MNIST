@@ -1,28 +1,21 @@
-import numpy as np
-from load import load_mnist_images
-from load import load_mnist_labels
-from train import load_params
-from train import make_predictions
-from train import get_accuracy
+import train
+import model
+import config
+import random
+import argparse
 
-test_images_path = "dataset/t10k-images.idx3-ubyte"
-test_labels_path = "dataset/t10k-labels.idx1-ubyte"
+parser = argparse.ArgumentParser(prog='eval.py', description='Evaluate neural network models trained using different datasets, learning rates, and iterations', add_help=True)
+parser.add_argument('-dataset', dest='dataset', metavar='mnist', help='dataset name', type=str, required=True)
+args = parser.parse_args()
 
-test_images = load_mnist_images(test_images_path)
-test_labels = load_mnist_labels(test_labels_path)
+dataset = config.configs[args.dataset]
 
-# add label to images array
-data = np.column_stack((test_labels, test_images))
-#print(data.shape)
+X_train, Y_train, X_dev, Y_dev = train.load_and_prepare_data(dataset['images'], dataset['labels'])
+W1, b1, W2, b2 = model.load_params(dataset['model'])
 
-m, n = data.shape
+dev_predictions = model.make_predictions(X_dev, W1, b1, W2, b2)
+print(model.get_accuracy(dev_predictions, Y_dev))
 
-# splitting dataset in dev set (test set)
-data_dev = data[0:1000].T
-Y_dev = data_dev[0]
-X_dev = data_dev[1:n]
-X_dev = X_dev / 255.
-
-W1, b1, W2, b2 = load_params('model/nn_parameters.npz')
-dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
-print(get_accuracy(dev_predictions, Y_dev))
+for i in range(10):
+    a = random.randint(0,1000)    # 10k images in the fashion-mnist
+    model.test_prediction(a, X_dev, Y_dev, W1, b1, W2, b2)
