@@ -1,3 +1,4 @@
+import load
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -273,3 +274,62 @@ def test_prediction(index, X, Y, W1, b1, W2, b2):
     plt.gray()
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
+
+def load_and_prepare_data(images_path, labels_path, split_ratio=0.1):
+    """
+    Load dataset, normalize, and split into training and validation sets.
+    
+    Args:
+        images_path (str): Path to the images file.
+        labels_path (str): Path to the labels file.
+        split_ratio (float): Proportion of the data to be used as validation set.
+        
+    Returns:
+        X_train (np.ndarray): Training data.
+        Y_train (np.ndarray): Training labels.
+        X_eval (np.ndarray): Validation data.
+        Y_eval (np.ndarray): Validation labels.
+    """
+
+    images = load.load_mnist_images(images_path)          # load images
+    labels = load.load_mnist_labels(labels_path)          # load labels
+    
+    data = np.column_stack((labels, images))              # combine labels and images
+    np.random.shuffle(data)
+    
+    m = data.shape[0]                                     
+    eval_size = int(m * split_ratio)                      # split into training and dev sets
+    
+    data_eval = data[:eval_size].T
+    Y_dev = data_eval[0]
+    X_dev = data_eval[1:] / 255.                          # normalize
+    
+    data_train = data[eval_size:].T
+    Y_train = data_train[0]
+    X_train = data_train[1:] / 255.                       # normalize
+    
+    return X_train, Y_train, X_dev, Y_dev
+
+def train_neural_network(X_train, Y_train, learning_rate, iterations, model_save_path=None):
+    """
+    Train the neural network using gradient descent.
+    
+    Args:
+        X_train (np.ndarray): Training data.
+        Y_train (np.ndarray): Training labels.
+        learning_rate (float): Learning rate for gradient descent.
+        iterations (int): Number of iterations for training.
+        model_save_path (str): Path to save the trained model parameters.
+    
+    Returns:
+        W1, b1, W2, b2 (np.ndarray): Trained weights and biases.
+    """
+    m = X_train.shape[1]
+    
+    W1, b1, W2, b2 = gradient_descent(X_train, Y_train, m, learning_rate, iterations)
+    
+    if model_save_path:
+        np.savez(model_save_path, W1=W1, b1=b1, W2=W2, b2=b2)
+        print(f"Model parameters saved to {model_save_path}")
+    
+    return W1, b1, W2, b2

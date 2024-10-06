@@ -1,4 +1,3 @@
-import train
 import model
 import config
 import random
@@ -10,7 +9,7 @@ args = parser.parse_args()
 
 dataset = config.configs[args.dataset]
 
-X_train, Y_train, X_dev, Y_dev = train.load_and_prepare_data(dataset['images'], dataset['labels'])
+X_train, Y_train, X_dev, Y_dev = model.load_and_prepare_data(dataset['images'], dataset['labels'])
 W1, b1, W2, b2 = model.load_params(dataset['model'])
 
 dev_predictions = model.make_predictions(X_dev, W1, b1, W2, b2)
