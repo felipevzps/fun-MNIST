@@ -2,10 +2,10 @@
 
 This project implements a simple neural network to classify digits from the [MNIST database](https://yann.lecun.com/exdb/mnist/) and fashion clothes from [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist). 
 
-![](https://github.com/felipevzps/fun-MNIST/tree/main/images/architecture.png)
+![](https://github.com/felipevzps/fun-MNIST/blob/main/images/architecture.png)
 
 >[!NOTE]
->The model consists of two layers and was built from scratch without using any machine learning framework.
+>The model consists of three layers (input, hidden and output) and was built *from scratch* without using any machine learning framework.
 
 ## Usage
 This repository contains scripts to train, evaluate, and visualize a neural network using MNIST and Fashion-MNIST datasets. 
