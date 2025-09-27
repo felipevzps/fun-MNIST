@@ -15,10 +15,10 @@ To train the neural network, run [train.py](https://github.com/felipevzps/fun-MN
 
 ````bash
 # usage
-python train.py -dataset <dataset_name> -lr/--learning_rate <learning_rate> -i/--iterations <iterations>
+python src/train.py -dataset <dataset_name> -lr/--learning_rate <learning_rate> -i/--iterations <iterations>
 
 # to train a model to predict handwritten digits using a learning rate of 0.1 and 1000 iterations
-python train.py -dataset mnist -lr 0.1 -i 1000
+python src/train.py -dataset mnist -lr 0.1 -i 1000
 ````
 
 ### Evaluating the Neural Network
@@ -26,10 +26,10 @@ To evaluate the trained neural network, run [eval.py](https://github.com/felipev
 
 ````bash
 # usage
-python eval.py -dataset <dataset_name> -predictions <predictions>
+python src/eval.py -dataset <dataset_name> -predictions <predictions>
 
 # to evaluate the previous mnist model trained using a learning rate of 0.1 and 1000 iterations
-python eval.py -dataset mnist -predictions 10
+python src/eval.py -dataset mnist -predictions 10
 ````
 
 ### Visualizing Model Activations
@@ -37,10 +37,10 @@ To visualize the neural network activations, run [visualize.py](https://github.c
 
 ````bash
 # usage
-python visualize.py -dataset <dataset_name>
+python src/visualize.py -dataset <dataset_name>
 
 # to visualize node activation from the previous mnist model trained using a learning rate of 0.1 and 1000 iterations
-python visualize.py -dataset mnist
+python src/visualize.py -dataset mnist
 ````
 
 ## Model Architecture
@@ -71,12 +71,12 @@ After training for 1000 iterations and using learning rate of 0.1, the model ach
 
 ````bash
 # training
-python train.py -dataset mnist -lr 0.1 -i 1000
+python src/train.py -dataset mnist -lr 0.1 -i 1000
 Iteration:  990
 Accuracy: 88.1056%
 
 # evaluating
-python eval.py -dataset mnist -predictions 10
+python src/eval.py -dataset mnist -predictions 10
 Parameters loaded from model/mnist/nn_parameters.npz
 Accuracy: 88.0500%
 ````
