@@ -11,3 +11,6 @@ dataset/fashion-mnist/t10k-images-idx3-ubyte
 dataset/fashion-mnist/t10k-labels-idx1-ubyte
 dataset/fashion-mnist/train-images-idx3-ubyte
 dataset/fashion-mnist/train-labels-idx1-ubyte
+
+# ignore pycache
+__pycache__/
