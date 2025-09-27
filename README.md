@@ -10,6 +10,20 @@ This project implements a simple neural network to classify digits from the [MNI
 ## Usage
 This repository contains scripts to train, evaluate, and visualize a neural network using MNIST and Fashion-MNIST datasets. 
 
+### Installing and Configuring
+
+```bash 
+# clone this repository 
+git clone https://github.com/felipevzps/fun-MNIST.git 
+cd fun-MNIST
+
+# create conda environment
+conda env create -n MNIST -f environment.yml
+
+# activating environment
+conda activate MNIST
+```
+
 ### Training the Neural Network
 To train the neural network, run [train.py](https://github.com/felipevzps/fun-MNIST/blob/main/train.py)
 
