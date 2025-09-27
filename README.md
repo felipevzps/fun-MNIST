@@ -2,7 +2,7 @@
 
 This project implements a simple neural network to classify digits from the [MNIST database](https://yann.lecun.com/exdb/mnist/) and fashion clothes from [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist). 
 
-![](https://github.com/felipevzps/fun-MNIST/blob/main/images/architecture.png)
+![](images/architecture.png)
 
 >[!NOTE]
 >The model consists of three layers (input, hidden and output) and was built *from scratch* without using any machine learning framework.
@@ -25,7 +25,7 @@ conda activate MNIST
 ```
 
 ### Training the Neural Network
-To train the neural network, run [train.py](https://github.com/felipevzps/fun-MNIST/blob/main/train.py)
+To train the neural network, run [src/train.py](src/train.py)
 
 ````bash
 # usage
@@ -36,7 +36,7 @@ python src/train.py -dataset mnist -lr 0.1 -i 1000
 ````
 
 ### Evaluating the Neural Network
-To evaluate the trained neural network, run [eval.py](https://github.com/felipevzps/fun-MNIST/blob/main/eval.py)
+To evaluate the trained neural network, run [src/eval.py](src/eval.py)
 
 ````bash
 # usage
@@ -47,7 +47,7 @@ python src/eval.py -dataset mnist -predictions 10
 ````
 
 ### Visualizing Model Activations
-To visualize the neural network activations, run [visualize.py](https://github.com/felipevzps/fun-MNIST/blob/main/visualize.py)
+To visualize the neural network activations, run [src/visualize.py](src/visualize.py)
 
 ````bash
 # usage
